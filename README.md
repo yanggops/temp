@@ -3,4 +3,4 @@
 
 
 ####추가
- 전자정부표준프레임워크에서 New Web Project로 샘플파일 생성 후 git등록
+ * 전자정부표준프레임워크에서 New Web Project로 샘플파일 생성 후 git등록
