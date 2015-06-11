@@ -52,13 +52,13 @@ public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements Eg
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EgovSampleServiceImpl.class);
 
-	/** SampleDAO */
+	/** sampleMapper */
 	// TODO ibatis 사용
-	@Resource(name = "sampleDAO")
-	private SampleDAO sampleDAO;
+//	@Resource(name = "sampleDAO")
+//	private SampleDAO sampleDAO;
 	// TODO mybatis 사용
-	//  @Resource(name="sampleMapper")
-	//	private SampleMapper sampleDAO;
+	@Resource(name="sampleMapper")
+	private SampleMapper sampleMapper;
 
 	/** ID Generation */
 	@Resource(name = "egovIdGnrService")
@@ -79,7 +79,7 @@ public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements Eg
 		vo.setId(id);
 		LOGGER.debug(vo.toString());
 
-		sampleDAO.insertSample(vo);
+		sampleMapper.insertSample(vo);
 		return id;
 	}
 
@@ -91,7 +91,7 @@ public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements Eg
 	 */
 	@Override
 	public void updateSample(SampleVO vo) throws Exception {
-		sampleDAO.updateSample(vo);
+		sampleMapper.updateSample(vo);
 	}
 
 	/**
@@ -102,7 +102,7 @@ public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements Eg
 	 */
 	@Override
 	public void deleteSample(SampleVO vo) throws Exception {
-		sampleDAO.deleteSample(vo);
+		sampleMapper.deleteSample(vo);
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements Eg
 	 */
 	@Override
 	public SampleVO selectSample(SampleVO vo) throws Exception {
-		SampleVO resultVO = sampleDAO.selectSample(vo);
+		SampleVO resultVO = sampleMapper.selectSample(vo);
 		if (resultVO == null)
 			throw processException("info.nodata.msg");
 		return resultVO;
@@ -127,7 +127,7 @@ public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements Eg
 	 */
 	@Override
 	public List<?> selectSampleList(SampleDefaultVO searchVO) throws Exception {
-		return sampleDAO.selectSampleList(searchVO);
+		return sampleMapper.selectSampleList(searchVO);
 	}
 
 	/**
@@ -138,7 +138,7 @@ public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements Eg
 	 */
 	@Override
 	public int selectSampleListTotCnt(SampleDefaultVO searchVO) {
-		return sampleDAO.selectSampleListTotCnt(searchVO);
+		return sampleMapper.selectSampleListTotCnt(searchVO);
 	}
 
 }

@@ -10,6 +10,7 @@
 		<aop:aspect ref="exceptionTransfer">
 			<aop:after-throwing throwing="exception" pointcut-ref="serviceMethod" method="transfer" />
 		</aop:aspect>
+		
 	</aop:config>
 	
 	<bean id="exceptionTransfer" class="egovframework.rte.fdl.cmmn.aspect.ExceptionTransfer">
@@ -20,14 +21,15 @@
 			</list>
 		</property>
 	</bean>
-
+	
 	<bean id="defaultExceptionHandleManager" class="egovframework.rte.fdl.cmmn.exception.manager.DefaultExceptionHandleManager">
 		<property name="reqExpMatcher">
 			<ref bean="antPathMater"/>
 		</property>
 		<property name="patterns">
 			<list>
-				<value>**service.impl.*</value>
+				<!-- <value>**service.impl.*</value> -->
+				<value>/**</value>
 			</list>
 		</property>
 		<property name="handlers">
@@ -43,7 +45,8 @@
 		</property>
 		<property name="patterns">
 			<list>
-				<value>**service.impl.*</value>
+				<!-- <value>**service.impl.*</value> -->
+				<value>/**</value>
 			</list>
 		</property>
 		<property name="handlers">
@@ -54,6 +57,6 @@
 	</bean>
 
 	<bean id="egovHandler" class="egovframework.example.cmmn.EgovSampleExcepHndlr" />
-	<bean id="otherHandler" class="egovframework.example.cmmn.EgovSampleOthersExcepHndlr" />	
+	<bean id="otherHandler" class="egovframework.example.cmmn.EgovSampleOthersExcepHndlr" />
 	
 </beans>
